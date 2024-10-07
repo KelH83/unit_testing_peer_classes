@@ -8,6 +8,13 @@ def test_creates_instance_of_a_diary():
     assert isinstance(new_diary, SecretDiary)
     assert new_diary.diary == fake_diary
 
+def test_instance_creation_throws_error_for_wrong_datatype():
+    with pytest.raises(Exception) as e:
+        fake_diary = 123
+        new_diary = SecretDiary(fake_diary)
+    error_message = str(e.value)
+    assert error_message == "Only class instances are allowed!"
+
 def test_calling_lock_locks_diary():
     fake_diary = Mock()
     new_diary = SecretDiary(fake_diary)

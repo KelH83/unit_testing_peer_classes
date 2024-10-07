@@ -1,7 +1,10 @@
 class SecretDiary:
     def __init__(self, diary):
-        self.diary = diary
-        self.locked = True
+        if type(diary) == str or type(diary) == int or type(diary) == dict or type(diary) == list:
+            raise Exception("Only class instances are allowed!")
+        else:          
+            self.diary = diary
+            self.locked = True
 
     def read(self):
         if self.locked:
